@@ -1,4 +1,5 @@
 CC=clang++
+DEBUGGER=lldb
 LDFLAGS=-stdlib=libc++
 CFLAGS=-std=c++1z
 DEBUG= -g
@@ -8,3 +9,7 @@ PROG= testWebsocket.out
 default: 
 	$(CC) $(CFLAGS) $(DEBUG) $(SRC) -o $(PROG) $(LDFLAGS)
 	./$(PROG)
+
+debug:
+	$(CC) $(CFLAGS) $(DEBUG) $(SRC) -o $(PROG) $(LDFLAGS)
+	$(DEBUGGER) ./$(PROG)
