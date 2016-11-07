@@ -3,7 +3,7 @@ DEBUGGER=lldb
 LDFLAGS=-stdlib=libc++
 CFLAGS=-std=c++1z
 DEBUG= -g
-SRC= test.cpp
+SRC= test.cpp sha1.cpp
 PROG= testWebsocket.out
 
 default: 

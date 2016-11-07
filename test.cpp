@@ -38,6 +38,13 @@ int main(int argc, char *argv[])
   print_packet(testFinAndRSV);
 
   cout<< "Is valid from client packet:"<<print_bool(validFromClientPacket(testFinAndRSV))<<endl;
-  
+
+  cout<<"key for key:"<<websocketKeyCalculate("dGhlIHNhbXBsZSBub25jZQ==")<<endl;
+
+  /*  cout<<"string to sha1:";
+  string test = "";
+  cin >> test;
+  cout<<"sha1("<<test<<"):"<<sha1(test)<<endl;
+  */
   return 0;
 }
