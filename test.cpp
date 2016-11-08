@@ -3,6 +3,8 @@
 
 using namespace std;
 
+string test_key = "dGhlIHNhbXBsZSBub25jZQ==";
+
 string print_bool(bool _b){
   return _b ? "true" : "false";
 }
@@ -39,7 +41,17 @@ int main(int argc, char *argv[])
 
   cout<< "Is valid from client packet:"<<print_bool(validFromClientPacket(testFinAndRSV))<<endl;
 
-  cout<<"key for key:"<<websocketKeyCalculate("dGhlIHNhbXBsZSBub25jZQ==")<<endl;
+  cout<<"key for key:"<<websocketKeyCalculate(test_key)<<endl;
+
+  cout<<"\nclient request:"<<createClientHandshakeRequest("/","localhost","80",test_key)<<endl;
+
+  cout<<"\nserver response:"<<createServerResponse(createClientHandshakeRequest("/","localhost","80",test_key))<<endl;
+
+  cout<<"\nserver response with post:"<<createServerResponse("POST / HTTP/1.1\nHost: localhost:80\nSec-WebSocket-Key: bluebirdssmilinatme\n")<<endl; 
+
+  cout<<"\nserver response with no key:"<<createServerResponse("GET / HTTP/1.1\nHost: localhost:80\n")<<endl;
+
+  cout<<"\nget path from request:"<<getValidGetPath(createClientHandshakeRequest("/","localhost","80",test_key))<<endl;
 
   /*  cout<<"string to sha1:";
   string test = "";
