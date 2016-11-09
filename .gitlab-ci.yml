@@ -2,7 +2,7 @@
 # use the official gcc image, based on debian
 # can use verions as well, like gcc:5.2
 # see https://hub.docker.com/_/gcc/
-image: gcc
+image: walberla/buildenv-ubuntu-clang
 
 build:
   stage: build
@@ -11,7 +11,7 @@ build:
   # before_script: 
   #   - apt update && apt -y install make autoconf 
   script: 
-    - g++ test.cpp sha1.cpp -o test
+    - clang++ -std=c++1z -stdlib=libc++ test.cpp sha1.cpp -o test
   artifacts:
     paths:
       - test
