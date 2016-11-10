@@ -53,7 +53,7 @@ string createClientHandshakeRequest(string path, string host, string port, strin
     <<"Upgrade: websocket\n"
     <<"Connection: Upgrade\n"
     <<"Sec-WebSocket-Key: "<<key<<"\n"
-    <<"Sec-WebSocket-Version: 13";
+    <<"Sec-WebSocket-Version: 13\n\n";
   return os.str();
 }
 
@@ -86,7 +86,7 @@ string createServerResponse(string client_request){
   os<<"HTTP/1.1 101 Switching Protocols\n"
     <<"Update: websocket\n"
     <<"Connection: Upgrade\n"
-    <<"Sec-WebSocket-Accept: "<<websocketKeyCalculate(key)<<"\n";
+    <<"Sec-WebSocket-Accept: "<<websocketKeyCalculate(key)<<"\n\n";
   return os.str();
 }
 
